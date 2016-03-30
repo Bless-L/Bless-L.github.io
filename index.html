@@ -109,7 +109,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/碎碎念/" style="font-size: 20px;">碎碎念</a> <a href="/tags/阅读记录/" style="font-size: 10px;">阅读记录</a>
+						<a href="/tags/碎碎念/" style="font-size: 20px;">碎碎念</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/阅读记录/" style="font-size: 10px;">阅读记录</a>
 					</div>
 				</section>
 				
@@ -174,6 +174,97 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-JavaScript的一些语法细节" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/11/JavaScript的一些语法细节/" class="article-date">
+  	<time datetime="2016-03-11T14:00:40.000Z" itemprop="datePublished">2016-03-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/11/JavaScript的一些语法细节/">JavaScript的一些语法细节</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code><span class="number">1</span>、字符串加数字时，数字会转换为字符串，字符串减数字时，字符串会转换为数字
+<span class="number">2</span>、<span class="keyword">typeof</span>(<span class="literal">null</span>) === “object”
+<span class="number">3</span>、Function、Array、Date均是继承于Object
+<span class="number">4</span>、<span class="keyword">new</span> 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象
+    例如：
+        &lt;code&gt;
+        <span class="keyword">var</span> obj = <span class="keyword">new</span> foo();
+
+        <span class="comment">//相当于</span>
+        <span class="keyword">var</span> obj = {};
+        obj.__proto__ = foo.prototype;
+        &lt;/code&gt;
+<span class="number">5</span>、对象里的key都是字符串
+<span class="number">6</span>、setTimeout中，如果回调函数使用匿名函数，则作用域为全局作用域，其<span class="keyword">this</span>指向window，如果只是代码段，则作用域为当前执行的作用域。
+    例如：
+        &lt;code&gt;
+        <span class="keyword">var</span> x=<span class="number">1</span>;
+        foo = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+              <span class="keyword">this</span>.x=<span class="number">2</span>;
+              <span class="keyword">this</span>.<span class="keyword">set</span> =<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+                setTimeout(console.log(<span class="keyword">this</span>.x),<span class="number">0</span>)
+              }
+              <span class="keyword">this</span>.sett = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+                 setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+                      console.log(<span class="keyword">this</span>.x)
+                 },<span class="number">1000</span>)
+              }
+
+        }
+        <span class="keyword">var</span> f = <span class="keyword">new</span> foo();
+        f.<span class="keyword">set</span>(); <span class="comment">//输出2</span>
+        f.sett();<span class="comment">//输出1</span>
+        &lt;/code&gt;
+<span class="number">7</span>、可以利用Array的length属性来增删数组的元素
+<span class="number">8</span>、Array的reverse、splice、sort方法会修改原数组。sort方法是按字符大小进行排序的，即按照字母表顺序（大写在小写前面），所以数组里的数字排序后不一定是从大到小排列
+<span class="number">9</span>、函数声明会被提前执行，函数表达式不会
+<span class="number">10</span>、对函数里的arguments属性，如果没有传参的话，arguments属性是不能修改其值的
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-11-26" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -407,7 +498,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2015 落花流水
+    		&copy; 2016 落花流水
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

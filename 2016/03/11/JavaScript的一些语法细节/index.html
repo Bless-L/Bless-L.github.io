@@ -3,18 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>使用hexo和github pages配置个人博客 | 堆填区</title>
+  <title>JavaScript的一些语法细节 | 堆填区</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我就是看这个教程建好这个博客的。  我是大自然的搬运工，详情请戳“http://www.cnblogs.com/zhcncn/p/4097881.html”">
+  <meta name="description" content="1、字符串加数字时，数字会转换为字符串，字符串减数字时，字符串会转换为数字
+2、typeof(null) === “object”
+3、Function、Array、Date均是继承于Object
+4、new 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象
+    例如：
+        &amp;lt;code&amp;gt;
+        var obj = new foo();">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用hexo和github pages配置个人博客">
-<meta property="og:url" content="http://yoursite.com/2015/11/09/My-New-Post/index.html">
+<meta property="og:title" content="JavaScript的一些语法细节">
+<meta property="og:url" content="http://yoursite.com/2016/03/11/JavaScript的一些语法细节/index.html">
 <meta property="og:site_name" content="堆填区">
-<meta property="og:description" content="我就是看这个教程建好这个博客的。  我是大自然的搬运工，详情请戳“http://www.cnblogs.com/zhcncn/p/4097881.html”">
-<meta property="og:updated_time" content="2015-11-09T11:04:10.354Z">
+<meta property="og:description" content="1、字符串加数字时，数字会转换为字符串，字符串减数字时，字符串会转换为数字
+2、typeof(null) === “object”
+3、Function、Array、Date均是继承于Object
+4、new 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象
+    例如：
+        &amp;lt;code&amp;gt;
+        var obj = new foo();">
+<meta property="og:updated_time" content="2016-03-27T15:34:58.119Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用hexo和github pages配置个人博客">
-<meta name="twitter:description" content="我就是看这个教程建好这个博客的。  我是大自然的搬运工，详情请戳“http://www.cnblogs.com/zhcncn/p/4097881.html”">
+<meta name="twitter:title" content="JavaScript的一些语法细节">
+<meta name="twitter:description" content="1、字符串加数字时，数字会转换为字符串，字符串减数字时，字符串会转换为数字
+2、typeof(null) === “object”
+3、Function、Array、Date均是继承于Object
+4、new 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象
+    例如：
+        &amp;lt;code&amp;gt;
+        var obj = new foo();">
   
     <link rel="alternative" href="/atom.xml" title="堆填区" type="application/atom+xml">
   
@@ -174,11 +192,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-My-New-Post" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JavaScript的一些语法细节" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/09/My-New-Post/" class="article-date">
-  	<time datetime="2015-11-09T10:59:12.000Z" itemprop="datePublished">2015-11-09</time>
+      <a href="/2016/03/11/JavaScript的一些语法细节/" class="article-date">
+  	<time datetime="2016-03-11T14:00:40.000Z" itemprop="datePublished">2016-03-11</time>
 </a>
     </div>
   
@@ -191,7 +209,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      使用hexo和github pages配置个人博客
+      JavaScript的一些语法细节
     </h1>
   
 
@@ -200,7 +218,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读记录/">阅读记录</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
 	</div>
 
         
@@ -211,8 +229,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>  我就是看这个教程建好这个博客的。<br>  我是大自然的搬运工，详情请戳“<a href="http://www.cnblogs.com/zhcncn/p/4097881.html”" target="_blank" rel="external">http://www.cnblogs.com/zhcncn/p/4097881.html”</a></p>
+        <pre><code><span class="number">1</span>、字符串加数字时，数字会转换为字符串，字符串减数字时，字符串会转换为数字
+<span class="number">2</span>、<span class="keyword">typeof</span>(<span class="literal">null</span>) === “object”
+<span class="number">3</span>、Function、Array、Date均是继承于Object
+<span class="number">4</span>、<span class="keyword">new</span> 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象
+    例如：
+        &lt;code&gt;
+        <span class="keyword">var</span> obj = <span class="keyword">new</span> foo();
 
+        <span class="comment">//相当于</span>
+        <span class="keyword">var</span> obj = {};
+        obj.__proto__ = foo.prototype;
+        &lt;/code&gt;
+<span class="number">5</span>、对象里的key都是字符串
+<span class="number">6</span>、setTimeout中，如果回调函数使用匿名函数，则作用域为全局作用域，其<span class="keyword">this</span>指向window，如果只是代码段，则作用域为当前执行的作用域。
+    例如：
+        &lt;code&gt;
+        <span class="keyword">var</span> x=<span class="number">1</span>;
+        foo = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+              <span class="keyword">this</span>.x=<span class="number">2</span>;
+              <span class="keyword">this</span>.<span class="keyword">set</span> =<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+                setTimeout(console.log(<span class="keyword">this</span>.x),<span class="number">0</span>)
+              }
+              <span class="keyword">this</span>.sett = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+                 setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+                      console.log(<span class="keyword">this</span>.x)
+                 },<span class="number">1000</span>)
+              }
+
+        }
+        <span class="keyword">var</span> f = <span class="keyword">new</span> foo();
+        f.<span class="keyword">set</span>(); <span class="comment">//输出2</span>
+        f.sett();<span class="comment">//输出1</span>
+        &lt;/code&gt;
+<span class="number">7</span>、可以利用Array的length属性来增删数组的元素
+<span class="number">8</span>、Array的reverse、splice、sort方法会修改原数组。sort方法是按字符大小进行排序的，即按照字母表顺序（大写在小写前面），所以数组里的数字排序后不一定是从大到小排列
+<span class="number">9</span>、函数声明会被提前执行，函数表达式不会
+<span class="number">10</span>、对函数里的arguments属性，如果没有传参的话，arguments属性是不能修改其值的
+</code></pre>
       
     </div>
     
@@ -221,18 +275,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/11/12/new-article/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          11-12
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/11/09/Paul-s-New-Psot/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">终于有了一个博客</div>
+    <a href="/2015/11/26/11-26/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">11-26</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
