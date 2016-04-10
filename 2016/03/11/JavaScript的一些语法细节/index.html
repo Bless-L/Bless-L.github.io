@@ -23,7 +23,7 @@
     例如：
         &amp;lt;code&amp;gt;
         var obj = new foo();">
-<meta property="og:updated_time" content="2016-03-27T15:34:58.119Z">
+<meta property="og:updated_time" content="2016-04-10T15:05:52.557Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript的一些语法细节">
 <meta name="twitter:description" content="1、字符串加数字时，数字会转换为字符串，字符串减数字时，字符串会转换为数字
@@ -266,6 +266,11 @@
 <span class="number">8</span>、Array的reverse、splice、sort方法会修改原数组。sort方法是按字符大小进行排序的，即按照字母表顺序（大写在小写前面），所以数组里的数字排序后不一定是从大到小排列
 <span class="number">9</span>、函数声明会被提前执行，函数表达式不会
 <span class="number">10</span>、对函数里的arguments属性，如果没有传参的话，arguments属性是不能修改其值的
+<span class="number">11</span>、闭包的闭其实就是对外部变量的封闭，可以简单把闭包理解为被返回的引用了外部变量的函数。闭包主要优点有灵活与便捷，可以封装，但缺点是可能会造成内存浪费，内存泄漏，性能消耗。
+<span class="number">12</span>、JavaScript实现类继承的主要方式是原型继承。
+    方法一：<span class="keyword">new</span> 一个父类对象并把它赋值给子类对象的prototype 属性。
+    方法二：运用Object.create方法和constructor方法，缺点是ES5才支持。
+<span class="number">13</span>、原型链是指一个对象的__proto__会指向上一级对象的prototype属性，并最终指向<span class="literal">null</span>。
 </code></pre>
       
     </div>
@@ -274,6 +279,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/04/10/2016腾讯实习生前端面试经历/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          2016腾讯实习生前端一面经历
+        
+      </div>
+    </a>
   
   
     <a href="/2015/11/26/11-26/" id="article-nav-older" class="article-nav-link-wrap">
