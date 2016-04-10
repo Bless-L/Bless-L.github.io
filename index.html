@@ -202,8 +202,85 @@
     <div class="article-entry" itemprop="articleBody">
       
         <pre><code>笔试题有很多是靠猜的，能来面试真的是有点意外，又有点兴奋。
-我的面试时间是<span class="number">4</span>月<span class="number">10</span>号下午<span class="number">15</span>:<span class="number">30</span>，然后我<span class="number">14</span>:<span class="number">30</span>就去到了喜来登。进酒店后绕一下就去到了签到点，然后看到签到的人大多都是中大的，
-</code></pre><p>心里就更紧张了，一直在那里静坐。还好我一个朋友也同样是面前端的，是16:00开始，就找到他，互相聊聊，缓解一下情绪。<br>    15:05分左右就开始叫到我了，让我跟在一个同房间的面试者后面，说她面完就到我。自然就怀着忐忑的心去到了1907。在外面听着她回答，顺便记录下问<br>题，说不定就问我同样的。大约30分钟后，到我了。<br>    整个面试过程也就30分钟左右，可能还不到。感觉面得挺快的。<br>    一开始是自我介绍，然后bilibala讲了什么时候学前端，做过什么项目之类的。接下来开始问问题。
+我的面试时间是<span class="number">4</span>月<span class="number">10</span>号下午<span class="number">15</span>:<span class="number">30</span>，然后我<span class="number">14</span>:<span class="number">30</span>就去到了喜来登。进酒店后绕一下就去到了签到点，然后看到签到的人大多都是中大的，心里就更紧张了，一直在那里静坐。还好我一个朋友也同样是面前端的，是<span class="number">16</span>:<span class="number">00</span>开始，就找到他，互相聊聊，缓解一下情绪。
+<span class="number">15</span>:<span class="number">05</span>分左右就开始叫到我了，让我跟在一个同房间的面试者后面，说她面完就到我。自然就怀着忐忑的心去到了<span class="number">1907</span>。在外面听着她回答，顺便记录下问题，说不定就问我同样的。大约<span class="number">30</span>分钟后，到我了。
+整个面试过程也就<span class="number">30</span>分钟左右，可能还不到。感觉面得挺快的。
+一开始是自我介绍，然后bilibala讲了什么时候学前端，做过什么项目之类的。接下来开始问问题。&lt;!--more--&gt;
+
+问：说一下在浏览器那里输入一个网址，会发生什么？
+答：DNS服务器解析，TCP三次握手，建立连接，然后bilibala...............
+
+问：你对http相关协议熟悉吗?
+答：我问是get，post请求之类？他说都可以，我就开始讲请求有get，post，put，<span class="keyword">delete</span>。然后讲了get，post的差别，get是明文，在URL传值，而且因为浏览器原因长度有限制，他问多大，我说<span class="number">2</span>k。接着说post是无限制，而且比较安全。然后又说了HTTPS协议，说是http加强版，经过了SSL加密。
+
+问：能讲细一点的东西吗？
+答：怎么细？
+
+问：说一下你了解的http报头有哪些？
+答：cache-control；<span class="keyword">if</span>-Match，检测Etag的；<span class="keyword">if</span>-modified-since（我当时这个只是答到了它的作用，没答出名字）。然后说不知道了，（可突然想起了跨域的那个），就说有一个是跨域的。
+
+问：能说出名字吗？
+答：c..u..r..s?（其实是cors）。然后说跨域的话我对jsonp比较了解。
+
+问：说一下jsonp原理
+答：通过一个script标签，它可以访问到外部服务器的文件，从而达到异步取值。
+
+问：那有什么缺点吗？
+答：可能是调试不方便？（答了就心虚了）。然后说不太懂。
+
+问：（皱了一下眉头）没关系，换一个话题，在github上看过一些项目的源码吗？
+答：只是关注过一些大神的博客，然后在百度前端技术学院春季班那里看过一些别人的源码，大项目的没有。
+
+问：那你说一下session
+答：session是服务器端用来临时存储信息的。像用户登录的时候，可以记录其登录状态。
+
+问：session在客户端有什么体现吗？
+答：（我题目都听不明白，瞬间懵逼）不太懂。
+
+问：说一下CSS，CSS的选择器有哪些？
+答：id，类，标签，伪类，before，after之类，还有通配符。
+
+问：这些选择器的权重呢？
+答：!important最高，style，id,<span class="keyword">class</span>,属性，div之类，最后是通配符。（当时差点忘记style了，到后面才记得，然后加上去）
+
+问：一个div如何居中？
+答：是垂直水平居中吗？
+
+问：说说看？
+答：有多种方式，说一个CSS3的。position:relative;top:<span class="number">50</span>%;left:<span class="number">50</span>%;transform:tranformX(-<span class="number">50</span>%) tranformY(-<span class="number">50</span>%);(其实是translateX(-<span class="number">50</span>%)，translateY(-<span class="number">50</span>%),当时说错了)
+
+问：（我没说完他就理解了）那只是水平居中呢？
+答：text-align:center;还有margin: <span class="number">0</span> <span class="keyword">auto</span>;
+
+问：js的话，说一下闭包吧
+答：我理解闭包是对外部变量的封闭，当一个函数与外部变量绑定，并且返回出去的时候，就是一个闭包，然后这个变量在内存中不会消失。
+
+问：说一下你这个项目有遇到过什么困难吗？
+答：首先要做一些移动端的适配，然后项目不大，用原生JS写，要自己封装一些函数，像Ajax这些，在网上参考了一些封装。
+
+问：那你有做过什么针对性优化吗?
+答：有的，像页面有很多js嘛，就集成在一个文件，还有css。方便加载，然后外部引用js,css这些。（想答雅虎优化那些的，但是觉得不合适，又忘记了一些，想了下就不说了）差不多就这些吧。
+
+问：说一说未来一两年的职业规划？
+答：先是尽力进入一家BAT这样的大公司，然后当上业务主力（表述有问题），然后做一个小leader，对自己要求高一点的话。
+
+问：有什么想学习的前端技术吗？
+答：有啊，像augular.js；模块化，像AMD，CMD这些；然后还有自动构建工具，像gulp....
+
+问：（没说完就打断我了）那你为什么不了解一下？
+答：（瞬间懵逼，不是问我想学什么吗？）我觉得我的js css 这些还不是特别的厉害，要先学好，然后把那个项目写完再学习。
+
+（沉默了一会.....）
+问：那今天也面得差不多了，有什么想要问我的吗？
+我问：腾讯那边的前端会有所侧重吗？就是有的偏js,有的偏css这样？
+他答：（笑着说）那肯定不会啦，已经分得很细了，再分的话就他那个了。（我插了一下话）“我觉得也是”。
+
+
+面试基本就这样结束了，是一面，问的都是些比较基础的东西。虽然大多数答出来了，但是一些加分的问题和开放性问题答得不好，而且感觉到面试官对我一点兴趣都没有，心里虚的一逼，就走出去了。
+有一些小插曲，公共号那里问到了openid，我还以为是公众号绑定的，他说不是，想了一下就不问了，我也不知道为什么。还最后的时候我感觉我的闭包答得不好，说可以写一下，写出来给你看看。他说不用了，这不重要。我想了好久这是什么意思。
+
+总结：面试过程挺快的，也不知道是他对我满意还是不满意，才会这么快，后来了解到大家都差不多，心里也踏实了一些。不过总体还是好心虚，怀着忐忑的心离开。
+</code></pre>
       
     </div>
     
@@ -216,10 +293,6 @@
 
       
 
-      
-        <p class="article-more-link">
-          <a  href="/2016/04/10/2016腾讯实习生前端面试经历/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -263,46 +336,46 @@
       
         <pre><code><span class="number">1</span>、字符串加数字时，数字会转换为字符串，字符串减数字时，字符串会转换为数字
 <span class="number">2</span>、<span class="keyword">typeof</span>(<span class="literal">null</span>) === “object”
-<span class="number">3</span>、Function、Array、Date均是继承于Object
+<span class="number">3</span>、<span class="built_in">Function</span>、<span class="built_in">Array</span>、<span class="built_in">Date</span>均是继承于<span class="built_in">Object</span>
 <span class="number">4</span>、<span class="keyword">new</span> 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象
     例如：
-        &lt;code&gt;
+        &lt;pre&gt;&lt;code&gt;
         <span class="keyword">var</span> obj = <span class="keyword">new</span> foo();
 
         <span class="comment">//相当于</span>
         <span class="keyword">var</span> obj = {};
         obj.__proto__ = foo.prototype;
-        &lt;/code&gt;
+        &lt;<span class="regexp">/pre&gt;&lt;/</span>code&gt;
 <span class="number">5</span>、对象里的key都是字符串
-<span class="number">6</span>、setTimeout中，如果回调函数使用匿名函数，则作用域为全局作用域，其<span class="keyword">this</span>指向window，如果只是代码段，则作用域为当前执行的作用域。
+<span class="number">6</span>、setTimeout中，如果回调函数使用匿名函数，则作用域为全局作用域，其<span class="keyword">this</span>指向<span class="built_in">window</span>，如果只是代码段，则作用域为当前执行的作用域。
     例如：
-        &lt;code&gt;
+        &lt;pre&gt;&lt;code&gt;
         <span class="keyword">var</span> x=<span class="number">1</span>;
-        foo = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+        foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
               <span class="keyword">this</span>.x=<span class="number">2</span>;
-              <span class="keyword">this</span>.<span class="keyword">set</span> =<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-                setTimeout(console.log(<span class="keyword">this</span>.x),<span class="number">0</span>)
+              <span class="keyword">this</span>.set =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+                setTimeout(<span class="built_in">console</span>.log(<span class="keyword">this</span>.x),<span class="number">0</span>)
               }
-              <span class="keyword">this</span>.sett = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-                 setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-                      console.log(<span class="keyword">this</span>.x)
+              <span class="keyword">this</span>.sett = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+                 setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+                      <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)
                  },<span class="number">1000</span>)
               }
 
         }
         <span class="keyword">var</span> f = <span class="keyword">new</span> foo();
-        f.<span class="keyword">set</span>(); <span class="comment">//输出2</span>
+        f.set(); <span class="comment">//输出2</span>
         f.sett();<span class="comment">//输出1</span>
-        &lt;/code&gt;
-<span class="number">7</span>、可以利用Array的length属性来增删数组的元素
-<span class="number">8</span>、Array的reverse、splice、sort方法会修改原数组。sort方法是按字符大小进行排序的，即按照字母表顺序（大写在小写前面），所以数组里的数字排序后不一定是从大到小排列
+        &lt;<span class="regexp">/pre&gt;&lt;/</span>code&gt;
+<span class="number">7</span>、可以利用<span class="built_in">Array</span>的length属性来增删数组的元素
+<span class="number">8</span>、<span class="built_in">Array</span>的reverse、splice、sort方法会修改原数组。sort方法是按字符大小进行排序的，即按照字母表顺序（大写在小写前面），所以数组里的数字排序后不一定是从大到小排列
 <span class="number">9</span>、函数声明会被提前执行，函数表达式不会
-<span class="number">10</span>、对函数里的arguments属性，如果没有传参的话，arguments属性是不能修改其值的
+<span class="number">10</span>、对函数里的<span class="built_in">arguments</span>属性，如果没有传参的话，<span class="built_in">arguments</span>属性是不能修改其值的
 <span class="number">11</span>、闭包的闭其实就是对外部变量的封闭，可以简单把闭包理解为被返回的引用了外部变量的函数。闭包主要优点有灵活与便捷，可以封装，但缺点是可能会造成内存浪费，内存泄漏，性能消耗。
 <span class="number">12</span>、JavaScript实现类继承的主要方式是原型继承。
     方法一：<span class="keyword">new</span> 一个父类对象并把它赋值给子类对象的prototype 属性。
-    方法二：运用Object.create方法和constructor方法，缺点是ES5才支持。
-<span class="number">13</span>、原型链是指一个对象的__proto__会指向上一级对象的prototype属性，并最终指向<span class="literal">null</span>。
+    方法二：运用<span class="built_in">Object</span>.create方法和<span class="constructor"><span class="keyword">constructor</span>方法，缺点是ES5才支持。
+13、原型链是指一个对象的__proto__会指向上一级对象的prototype属性，并最终指向null。</span>
 </code></pre>
       
     </div>

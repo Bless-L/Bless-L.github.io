@@ -10,8 +10,8 @@
 3、Function、Array、Date均是继承于Object
 4、new 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象
     例如：
-        &amp;lt;code&amp;gt;
-        var obj = new foo();">
+        &amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;
+        var obj = n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript的一些语法细节">
 <meta property="og:url" content="http://yoursite.com/2016/03/11/JavaScript的一些语法细节/index.html">
@@ -21,9 +21,9 @@
 3、Function、Array、Date均是继承于Object
 4、new 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象
     例如：
-        &amp;lt;code&amp;gt;
-        var obj = new foo();">
-<meta property="og:updated_time" content="2016-04-10T15:05:52.557Z">
+        &amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;
+        var obj = n">
+<meta property="og:updated_time" content="2016-04-10T15:10:44.349Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript的一些语法细节">
 <meta name="twitter:description" content="1、字符串加数字时，数字会转换为字符串，字符串减数字时，字符串会转换为数字
@@ -31,8 +31,8 @@
 3、Function、Array、Date均是继承于Object
 4、new 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象
     例如：
-        &amp;lt;code&amp;gt;
-        var obj = new foo();">
+        &amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;
+        var obj = n">
   
     <link rel="alternative" href="/atom.xml" title="堆填区" type="application/atom+xml">
   
@@ -231,46 +231,46 @@
       
         <pre><code><span class="number">1</span>、字符串加数字时，数字会转换为字符串，字符串减数字时，字符串会转换为数字
 <span class="number">2</span>、<span class="keyword">typeof</span>(<span class="literal">null</span>) === “object”
-<span class="number">3</span>、Function、Array、Date均是继承于Object
+<span class="number">3</span>、<span class="built_in">Function</span>、<span class="built_in">Array</span>、<span class="built_in">Date</span>均是继承于<span class="built_in">Object</span>
 <span class="number">4</span>、<span class="keyword">new</span> 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象
     例如：
-        &lt;code&gt;
+        &lt;pre&gt;&lt;code&gt;
         <span class="keyword">var</span> obj = <span class="keyword">new</span> foo();
 
         <span class="comment">//相当于</span>
         <span class="keyword">var</span> obj = {};
         obj.__proto__ = foo.prototype;
-        &lt;/code&gt;
+        &lt;<span class="regexp">/pre&gt;&lt;/</span>code&gt;
 <span class="number">5</span>、对象里的key都是字符串
-<span class="number">6</span>、setTimeout中，如果回调函数使用匿名函数，则作用域为全局作用域，其<span class="keyword">this</span>指向window，如果只是代码段，则作用域为当前执行的作用域。
+<span class="number">6</span>、setTimeout中，如果回调函数使用匿名函数，则作用域为全局作用域，其<span class="keyword">this</span>指向<span class="built_in">window</span>，如果只是代码段，则作用域为当前执行的作用域。
     例如：
-        &lt;code&gt;
+        &lt;pre&gt;&lt;code&gt;
         <span class="keyword">var</span> x=<span class="number">1</span>;
-        foo = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+        foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
               <span class="keyword">this</span>.x=<span class="number">2</span>;
-              <span class="keyword">this</span>.<span class="keyword">set</span> =<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-                setTimeout(console.log(<span class="keyword">this</span>.x),<span class="number">0</span>)
+              <span class="keyword">this</span>.set =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+                setTimeout(<span class="built_in">console</span>.log(<span class="keyword">this</span>.x),<span class="number">0</span>)
               }
-              <span class="keyword">this</span>.sett = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-                 setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-                      console.log(<span class="keyword">this</span>.x)
+              <span class="keyword">this</span>.sett = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+                 setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+                      <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)
                  },<span class="number">1000</span>)
               }
 
         }
         <span class="keyword">var</span> f = <span class="keyword">new</span> foo();
-        f.<span class="keyword">set</span>(); <span class="comment">//输出2</span>
+        f.set(); <span class="comment">//输出2</span>
         f.sett();<span class="comment">//输出1</span>
-        &lt;/code&gt;
-<span class="number">7</span>、可以利用Array的length属性来增删数组的元素
-<span class="number">8</span>、Array的reverse、splice、sort方法会修改原数组。sort方法是按字符大小进行排序的，即按照字母表顺序（大写在小写前面），所以数组里的数字排序后不一定是从大到小排列
+        &lt;<span class="regexp">/pre&gt;&lt;/</span>code&gt;
+<span class="number">7</span>、可以利用<span class="built_in">Array</span>的length属性来增删数组的元素
+<span class="number">8</span>、<span class="built_in">Array</span>的reverse、splice、sort方法会修改原数组。sort方法是按字符大小进行排序的，即按照字母表顺序（大写在小写前面），所以数组里的数字排序后不一定是从大到小排列
 <span class="number">9</span>、函数声明会被提前执行，函数表达式不会
-<span class="number">10</span>、对函数里的arguments属性，如果没有传参的话，arguments属性是不能修改其值的
+<span class="number">10</span>、对函数里的<span class="built_in">arguments</span>属性，如果没有传参的话，<span class="built_in">arguments</span>属性是不能修改其值的
 <span class="number">11</span>、闭包的闭其实就是对外部变量的封闭，可以简单把闭包理解为被返回的引用了外部变量的函数。闭包主要优点有灵活与便捷，可以封装，但缺点是可能会造成内存浪费，内存泄漏，性能消耗。
 <span class="number">12</span>、JavaScript实现类继承的主要方式是原型继承。
     方法一：<span class="keyword">new</span> 一个父类对象并把它赋值给子类对象的prototype 属性。
-    方法二：运用Object.create方法和constructor方法，缺点是ES5才支持。
-<span class="number">13</span>、原型链是指一个对象的__proto__会指向上一级对象的prototype属性，并最终指向<span class="literal">null</span>。
+    方法二：运用<span class="built_in">Object</span>.create方法和<span class="constructor"><span class="keyword">constructor</span>方法，缺点是ES5才支持。
+13、原型链是指一个对象的__proto__会指向上一级对象的prototype属性，并最终指向null。</span>
 </code></pre>
       
     </div>
