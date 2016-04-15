@@ -5,34 +5,25 @@
   
   <title>JavaScript的一些语法细节 | 堆填区</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1、字符串加数字时，数字会转换为字符串，字符串减数字时，字符串会转换为数字
-2、typeof(null) === “object”
-3、Function、Array、Date均是继承于Object
-4、new 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象
-    例如：
-        &amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;
-        var obj = n">
+  <meta name="description" content="字符串加数字时，数字会转换为字符串，字符串减数字时，字符串会转换为数字
+typeof(null) === “object”
+Function、Array、Date均是继承于Object
+new 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象 例如：1234var obj = new foo();//相当于var obj = &amp;#123;&amp;#125;;obj.__proto_">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript的一些语法细节">
 <meta property="og:url" content="http://yoursite.com/2016/03/11/JavaScript的一些语法细节/index.html">
 <meta property="og:site_name" content="堆填区">
-<meta property="og:description" content="1、字符串加数字时，数字会转换为字符串，字符串减数字时，字符串会转换为数字
-2、typeof(null) === “object”
-3、Function、Array、Date均是继承于Object
-4、new 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象
-    例如：
-        &amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;
-        var obj = n">
-<meta property="og:updated_time" content="2016-04-10T15:10:44.349Z">
+<meta property="og:description" content="字符串加数字时，数字会转换为字符串，字符串减数字时，字符串会转换为数字
+typeof(null) === “object”
+Function、Array、Date均是继承于Object
+new 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象 例如：1234var obj = new foo();//相当于var obj = &amp;#123;&amp;#125;;obj.__proto_">
+<meta property="og:updated_time" content="2016-04-15T12:51:57.280Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript的一些语法细节">
-<meta name="twitter:description" content="1、字符串加数字时，数字会转换为字符串，字符串减数字时，字符串会转换为数字
-2、typeof(null) === “object”
-3、Function、Array、Date均是继承于Object
-4、new 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象
-    例如：
-        &amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;
-        var obj = n">
+<meta name="twitter:description" content="字符串加数字时，数字会转换为字符串，字符串减数字时，字符串会转换为数字
+typeof(null) === “object”
+Function、Array、Date均是继承于Object
+new 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象 例如：1234var obj = new foo();//相当于var obj = &amp;#123;&amp;#125;;obj.__proto_">
   
     <link rel="alternative" href="/atom.xml" title="堆填区" type="application/atom+xml">
   
@@ -229,49 +220,37 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code><span class="number">1</span>、字符串加数字时，数字会转换为字符串，字符串减数字时，字符串会转换为数字
-<span class="number">2</span>、<span class="keyword">typeof</span>(<span class="literal">null</span>) === “object”
-<span class="number">3</span>、<span class="built_in">Function</span>、<span class="built_in">Array</span>、<span class="built_in">Date</span>均是继承于<span class="built_in">Object</span>
-<span class="number">4</span>、<span class="keyword">new</span> 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象
-    例如：
-        &lt;pre&gt;&lt;code&gt;
-        <span class="keyword">var</span> obj = <span class="keyword">new</span> foo();
+        <ul>
+<li>字符串加数字时，数字会转换为字符串，字符串减数字时，字符串会转换为数字</li>
+<li>typeof(null) === “object”</li>
+<li>Function、Array、Date均是继承于Object</li>
+<li>new 一个函数并赋给一个对象时，此对象的原型为该函数的prototype对象<br> 例如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> foo();</span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">obj.__proto__ = foo.prototype;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>        
+<ul>
+<li><p>对象里的key都是字符串</p>
+</li>
+<li><p>setTimeout中，如果回调函数使用匿名函数，则作用域为全局作用域，其this指向window，如果只是代码段，则作用域为当前执行的作用域。</p>
+<p> 例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x=<span class="number">1</span>;</span><br><span class="line">foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> 		<span class="keyword">this</span>.x=<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">this</span>.set =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	    setTimeout(<span class="built_in">console</span>.log(<span class="keyword">this</span>.x),<span class="number">0</span>)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">this</span>.sett = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		    <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</span><br><span class="line">		&#125;,<span class="number">1000</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> foo();</span><br><span class="line">f.set(); <span class="comment">//输出2</span></span><br><span class="line">f.sett();<span class="comment">//输出1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以利用Array的length属性来增删数组的元素</p>
+</li>
+<li><p>Array的reverse、splice、sort方法会修改原数组。sort方法是按字符大小进行排序的，即按照字母表顺序（大写在小写前面），所以数组里的数字排序后不一定是从大到小排列</p>
+</li>
+<li><p>函数声明会被提前执行，函数表达式不会</p>
+</li>
+<li><p>对函数里的arguments属性，如果没有传参的话，arguments属性是不能修改其值的</p>
+</li>
+<li><p>闭包的闭其实就是对外部变量的封闭，可以简单把闭包理解为被返回的引用了外部变量的函数。闭包主要优点有灵活与便捷，可以封装，但缺点是可能会造成内存浪费，内存泄漏，性能消耗。</p>
+</li>
+<li><p>JavaScript实现类继承的主要方式是原型继承。</p>
+<p> 方法一：new一个父类对象并把它赋值给子类对象的prototype 属性。<br> 方法二：运用Object.create方法和constructor方法，缺点是ES5才支持。</p>
+</li>
+<li>原型链是指一个对象的<strong>proto</strong>会指向上一级对象的prototype属性，并最终指向null。</li>
+</ul>
 
-        <span class="comment">//相当于</span>
-        <span class="keyword">var</span> obj = {};
-        obj.__proto__ = foo.prototype;
-        &lt;<span class="regexp">/pre&gt;&lt;/</span>code&gt;
-<span class="number">5</span>、对象里的key都是字符串
-<span class="number">6</span>、setTimeout中，如果回调函数使用匿名函数，则作用域为全局作用域，其<span class="keyword">this</span>指向<span class="built_in">window</span>，如果只是代码段，则作用域为当前执行的作用域。
-    例如：
-        &lt;pre&gt;&lt;code&gt;
-        <span class="keyword">var</span> x=<span class="number">1</span>;
-        foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-              <span class="keyword">this</span>.x=<span class="number">2</span>;
-              <span class="keyword">this</span>.set =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-                setTimeout(<span class="built_in">console</span>.log(<span class="keyword">this</span>.x),<span class="number">0</span>)
-              }
-              <span class="keyword">this</span>.sett = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-                 setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-                      <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)
-                 },<span class="number">1000</span>)
-              }
-
-        }
-        <span class="keyword">var</span> f = <span class="keyword">new</span> foo();
-        f.set(); <span class="comment">//输出2</span>
-        f.sett();<span class="comment">//输出1</span>
-        &lt;<span class="regexp">/pre&gt;&lt;/</span>code&gt;
-<span class="number">7</span>、可以利用<span class="built_in">Array</span>的length属性来增删数组的元素
-<span class="number">8</span>、<span class="built_in">Array</span>的reverse、splice、sort方法会修改原数组。sort方法是按字符大小进行排序的，即按照字母表顺序（大写在小写前面），所以数组里的数字排序后不一定是从大到小排列
-<span class="number">9</span>、函数声明会被提前执行，函数表达式不会
-<span class="number">10</span>、对函数里的<span class="built_in">arguments</span>属性，如果没有传参的话，<span class="built_in">arguments</span>属性是不能修改其值的
-<span class="number">11</span>、闭包的闭其实就是对外部变量的封闭，可以简单把闭包理解为被返回的引用了外部变量的函数。闭包主要优点有灵活与便捷，可以封装，但缺点是可能会造成内存浪费，内存泄漏，性能消耗。
-<span class="number">12</span>、JavaScript实现类继承的主要方式是原型继承。
-    方法一：<span class="keyword">new</span> 一个父类对象并把它赋值给子类对象的prototype 属性。
-    方法二：运用<span class="built_in">Object</span>.create方法和<span class="constructor"><span class="keyword">constructor</span>方法，缺点是ES5才支持。
-13、原型链是指一个对象的__proto__会指向上一级对象的prototype属性，并最终指向null。</span>
-</code></pre>
       
     </div>
     
@@ -284,7 +263,7 @@
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          2016腾讯实习生前端一面经历
+          2016腾讯实习生前端面试经历及总结（一）
         
       </div>
     </a>
