@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>《你不知道的Javascript(上)》阅读笔记(一) | 堆填区</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前些日子在朋友的推荐下看了《你不知道的JavaScript（上）》，感觉真的获益良多。文章内容不多，才200页不到，可讲的都是些在Js中的重难点，以及容易遇到的坑，完全理解后会让你对Js有了新的认识，作为Js进阶书籍是非常不错的。
+趁热打铁，做些笔记记录下，加深理解。
+作用域书的上半部分讲了作用域和闭包，我也谈谈自己的看法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《你不知道的Javascript(上)》阅读笔记(一)">
+<meta property="og:url" content="http://yoursite.com/2016/05/20/《你不知道的Javascript-上-》阅读笔记-一/index.html">
+<meta property="og:site_name" content="堆填区">
+<meta property="og:description" content="前些日子在朋友的推荐下看了《你不知道的JavaScript（上）》，感觉真的获益良多。文章内容不多，才200页不到，可讲的都是些在Js中的重难点，以及容易遇到的坑，完全理解后会让你对Js有了新的认识，作为Js进阶书籍是非常不错的。
+趁热打铁，做些笔记记录下，加深理解。
+作用域书的上半部分讲了作用域和闭包，我也谈谈自己的看法。">
+<meta property="og:updated_time" content="2016-05-22T15:44:42.367Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《你不知道的Javascript(上)》阅读笔记(一)">
+<meta name="twitter:description" content="前些日子在朋友的推荐下看了《你不知道的JavaScript（上）》，感觉真的获益良多。文章内容不多，才200页不到，可讲的都是些在Js中的重难点，以及容易遇到的坑，完全理解后会让你对Js有了新的认识，作为Js进阶书籍是非常不错的。
+趁热打铁，做些笔记记录下，加深理解。
+作用域书的上半部分讲了作用域和闭包，我也谈谈自己的看法。">
+  
+    <link rel="alternative" href="/atom.xml" title="堆填区" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://tp2.sinaimg.cn/1902368857/180/5738575043/1" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">落花流水丶</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/碎碎念/">碎碎念</a></li>
+				        
+							<li><a href="/tags/阅读笔记/">阅读笔记</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Bless-L" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/1902368857/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/liang-wei-19-34" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:664007627@qq.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/碎碎念/" style="font-size: 20px;">碎碎念</a> <a href="/tags/阅读笔记/" style="font-size: 16.67px;">阅读笔记</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">前端菜鸟/ 一加手机2用户/ 爱篮球 爱唱歌 爱王大锤/ 在学习vue</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">落花流水丶</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://tp2.sinaimg.cn/1902368857/180/5738575043/1" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">落花流水丶</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/碎碎念/">碎碎念</a></li>
+		        
+					<li><a href="/tags/阅读笔记/">阅读笔记</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Bless-L" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/1902368857/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/liang-wei-19-34" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:664007627@qq.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-《你不知道的Javascript-上-》阅读笔记-一" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/20/《你不知道的Javascript-上-》阅读笔记-一/" class="article-date">
+  	<time datetime="2016-05-20T04:19:36.000Z" itemprop="datePublished">2016-05-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《你不知道的Javascript(上)》阅读笔记(一)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/作用域/">作用域</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读笔记/">阅读笔记</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前些日子在朋友的推荐下看了《你不知道的JavaScript（上）》，感觉真的获益良多。文章内容不多，才200页不到，可讲的都是些在Js中的重难点，以及容易遇到的坑，完全理解后会让你对Js有了新的认识，作为Js进阶书籍是非常不错的。</p>
+<p>趁热打铁，做些笔记记录下，加深理解。</p>
+<h1 id="作用域"><strong>作用域</strong></h1><p>书的上半部分讲了作用域和闭包，我也谈谈自己的看法。<a id="more"></a></p>
+<hr>
+<h3 id="函数作用域"><strong>函数作用域</strong></h3><p>众所周知，ES5是没有块级作用域的，只有全局作用域和函数作用域。而作用域之间可以互相嵌套，内层作用域可以访问到外层作用域的变量（这其实也是闭包产生一个很重要条件），举个书中例子<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b = a * <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">c</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a , b ,c)</span><br><span class="line">    &#125;;</span><br><span class="line">    bar(b * <span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo();<span class="comment">//3，6，18</span></span><br><span class="line"><span class="built_in">console</span>.log(b);<span class="comment">//Uncaught ReferenceError: b is not defined</span></span><br></pre></td></tr></table></figure></p>
+<p>在这个例子中可以看到，bar中其实并没有a,b这两个变量，但它会依次向上级作用域查找，最终在foo中找到了b；在全局中找到了a，并将他们打印。相反，我在全局中访问b，则会报错，因为外层的访问不了内层的。</p>
+<p>那么再看看这个例子<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">'use strict'</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    b = a * <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">c</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a , b ,c)</span><br><span class="line">    &#125;;</span><br><span class="line">    bar(b * <span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo();<span class="comment">//3，6，18</span></span><br><span class="line"><span class="built_in">console</span>.log(b);<span class="comment">//6</span></span><br></pre></td></tr></table></figure></p>
+<p>这段代码和第一段只有一点不同，就是b前面的var声明没有了。然而这时候我们访问b却可以得到正确结果，是因为我们可以访问到内部变量？其实不是。</p>
+<p>前面说过，内层作用域可以访问到外层作用域的变量，所以运行foo时它会先自身里查找b，发现foo里没有（因为没有声明），然后向上层，也就是全局作用域查找，也没有。这时，Js内部会自动在全局作用域中声明b。（是的，是自动声明，也不会告诉你，这就坑的地方，会导致很多意想不到的结果）<br>所以，接下来就能够成功给b赋值，并且在全局访问到b，因为b本来就在全局里。</p>
+<blockquote>
+<p>PS：在严格模式下Js内部是不会自动声明的,如果在刚才那段代码前面加上<code>&#39;use strict&#39;</code> ，下面这句就会报错,因为foo中有没声明的变量b<br><code>foo(b);//Uncaught ReferenceError: b is not defined</code></p>
+</blockquote>
+<hr>
+<h3 id="块级作用域"><strong>块级作用域</strong></h3><p>语法上来说，块级作用域就是指if/else/for/while语句里2个大括号之间的部分，前面说了ES5没有块级作用域，这会导致很多莫名其妙的坑<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>;i++)&#123; </span><br><span class="line">        <span class="built_in">console</span>.log(i); <span class="comment">//0, 1, ..., 9 </span></span><br><span class="line">    &#125; </span><br><span class="line">    <span class="built_in">console</span>.log(i); <span class="comment">//10 </span></span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure></p>
+<p>如上面所示，你可能会以为第二句<code>console.log(i)</code>会报错，因为i已经不再for循环里面访问了。其实不然，上面的代码和下面的是等价的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">10</span>;i++)&#123; </span><br><span class="line">        <span class="built_in">console</span>.log(i); <span class="comment">//0, 1, ..., 9 </span></span><br><span class="line">    &#125; </span><br><span class="line">    <span class="built_in">console</span>.log(i); <span class="comment">//10 </span></span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure></p>
+<p>也就是说，在for括号中声明变量其实会先提升到当前作用域中声明，而不是属于这个语法中的’块’。</p>
+<p>时代总是在进步的，在<a href="http://es6.ruanyifeng.com/#docs/let#块级作用域" target="_blank" rel="external">ES6</a>中已经解决了这个问题。<a href="http://es6.ruanyifeng.com/#docs/let#块级作用域" target="_blank" rel="external">ES6</a>中可以使用<code>let</code>,<code>const</code>来声明具有块级作用域的变量，并且不存在变量提升（下面会提到）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>;i++)&#123; </span><br><span class="line">        <span class="built_in">console</span>.log(i); <span class="comment">//0, 1, ..., 9 </span></span><br><span class="line">    &#125; </span><br><span class="line">    <span class="built_in">console</span>.log(i); <span class="comment">//Uncaught ReferenceError: i is not defined</span></span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure></p>
+<p>就是这样，用let代替var之后，就只能在for循环代码块中访问到i（也就是两个大括号包裹的部分），在外面访问则会报错。</p>
+<hr>
+<h3 id="变量提升"><strong>变量提升</strong></h3><p>不得不说，变量提升如果稍不注意的话也会引起很多坑。想起我之前做的那道笔试，满眼都是泪！！</p>
+<p>看个例子<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    a = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure></p>
+<p>大家觉得上面会依次打印出什么？<code>1, 2 ,3 ,undefined</code>?</p>
+<p><strong>其实正确的打印结果是<code>undefined, 1, 3, 2</code></strong><br>在Js中，<code>var</code>声明的变量会被提升到当前作用域的最顶部执行（函数声明也是如此，并且优先权大于变量声明）。也就是说，上面这段代码等价于<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a,b;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    a = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">window</span>.a);</span><br><span class="line">    b = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure></p>
+<p>所以第一个会打印出<code>undefined</code>,因为<code>a</code>声明了却没有赋值；<br>第二打印出来的<code>this.a</code>跟<code>this</code>的绑定有关，在这里<code>this</code>是指<code>window</code>，所以打印出来的结果是全局变量<code>a</code>(书中第二部分会详细说明<code>this</code>的绑定机制，到时我也会写篇笔记)；<br>第三个最简单了，没什么好讲的；<br>第四个因为<code>a</code>在前面被赋值成了<code>2</code>，所以会打印出<code>2</code>。</p>
+<p>书中关于作用域的部分还讲了<code>eval</code>,<code>with</code>,<code>try/catch</code>,IIFE（立即执行函数表达式）等内容，这里就不写那么多了。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/18/2016腾讯实习生前端面试经历（二）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2016腾讯实习生前端面试经历及总结（二)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 落花流水丶
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
