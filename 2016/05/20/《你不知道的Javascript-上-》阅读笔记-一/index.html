@@ -15,7 +15,7 @@
 <meta property="og:description" content="前些日子在朋友的推荐下看了《你不知道的JavaScript（上）》，感觉真的获益良多。文章内容不多，才200页不到，可讲的都是些在Js中的重难点，以及容易遇到的坑，完全理解后会让你对Js有了新的认识，作为Js进阶书籍是非常不错的。
 趁热打铁，做些笔记记录下，加深理解。
 作用域书的上半部分讲了作用域和闭包，我也谈谈自己的看法。">
-<meta property="og:updated_time" content="2016-05-22T15:44:42.367Z">
+<meta property="og:updated_time" content="2016-05-22T16:18:56.551Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《你不知道的Javascript(上)》阅读笔记(一)">
 <meta name="twitter:description" content="前些日子在朋友的推荐下看了《你不知道的JavaScript（上）》，感觉真的获益良多。文章内容不多，才200页不到，可讲的都是些在Js中的重难点，以及容易遇到的坑，完全理解后会让你对Js有了新的认识，作为Js进阶书籍是非常不错的。
@@ -116,7 +116,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/碎碎念/" style="font-size: 20px;">碎碎念</a> <a href="/tags/阅读笔记/" style="font-size: 16.67px;">阅读笔记</a>
+						<a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/碎碎念/" style="font-size: 20px;">碎碎念</a> <a href="/tags/闭包/" style="font-size: 10px;">闭包</a> <a href="/tags/阅读笔记/" style="font-size: 16.67px;">阅读笔记</a>
 					</div>
 				</section>
 				
@@ -223,7 +223,7 @@
 <hr>
 <h3 id="函数作用域"><strong>函数作用域</strong></h3><p>众所周知，ES5是没有块级作用域的，只有全局作用域和函数作用域。而作用域之间可以互相嵌套，内层作用域可以访问到外层作用域的变量（这其实也是闭包产生一个很重要条件），举个书中例子<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b = a * <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">c</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a , b ,c)</span><br><span class="line">    &#125;;</span><br><span class="line">    bar(b * <span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo();<span class="comment">//3，6，18</span></span><br><span class="line"><span class="built_in">console</span>.log(b);<span class="comment">//Uncaught ReferenceError: b is not defined</span></span><br></pre></td></tr></table></figure></p>
 <p>在这个例子中可以看到，bar中其实并没有a,b这两个变量，但它会依次向上级作用域查找，最终在foo中找到了b；在全局中找到了a，并将他们打印。相反，我在全局中访问b，则会报错，因为外层的访问不了内层的。</p>
-<p>那么再看看这个例子<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">'use strict'</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    b = a * <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">c</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a , b ,c)</span><br><span class="line">    &#125;;</span><br><span class="line">    bar(b * <span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo();<span class="comment">//3，6，18</span></span><br><span class="line"><span class="built_in">console</span>.log(b);<span class="comment">//6</span></span><br></pre></td></tr></table></figure></p>
+<p>那么再看看这个例子<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    b = a * <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">c</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a , b ,c)</span><br><span class="line">    &#125;;</span><br><span class="line">    bar(b * <span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo();<span class="comment">//3，6，18</span></span><br><span class="line"><span class="built_in">console</span>.log(b);<span class="comment">//6</span></span><br></pre></td></tr></table></figure></p>
 <p>这段代码和第一段只有一点不同，就是b前面的var声明没有了。然而这时候我们访问b却可以得到正确结果，是因为我们可以访问到内部变量？其实不是。</p>
 <p>前面说过，内层作用域可以访问到外层作用域的变量，所以运行foo时它会先自身里查找b，发现foo里没有（因为没有声明），然后向上层，也就是全局作用域查找，也没有。这时，Js内部会自动在全局作用域中声明b。（是的，是自动声明，也不会告诉你，这就坑的地方，会导致很多意想不到的结果）<br>所以，接下来就能够成功给b赋值，并且在全局访问到b，因为b本来就在全局里。</p>
 <blockquote>
@@ -250,6 +250,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/06/05/《你不知道的Javascript-上-》阅读笔记-二/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          《你不知道的Javascript(上)》阅读笔记(二)
+        
+      </div>
+    </a>
   
   
     <a href="/2016/04/18/2016腾讯实习生前端面试经历（二）/" id="article-nav-older" class="article-nav-link-wrap">
