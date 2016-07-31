@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>基于Vue项目开发中遇到的坑及终结 | 堆填区</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="之前一直在公司忙项目，忙项目的，好歹是发布了1.0版本。终于是有时间写一个总结了。话说我就一个实习生一进来就要做项目核心，真的有点受宠若惊，还好项目是1.0版本，先实现部分功能，访问量也不大，加上一起很好的上司带我（其实就加上我就两个人= =），完成的还算顺利。期间也学习到了很多。
+项目在5月底启动，属于创业公司的业务扩展吧，IOS和安卓都有成型的版本，所以要做一个对应的移动端H5版的机票订，买票">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Vue项目开发中遇到的坑及终结">
+<meta property="og:url" content="http://yoursite.com/2016/07/17/基于Vue项目开发中遇到的坑及终结/index.html">
+<meta property="og:site_name" content="堆填区">
+<meta property="og:description" content="之前一直在公司忙项目，忙项目的，好歹是发布了1.0版本。终于是有时间写一个总结了。话说我就一个实习生一进来就要做项目核心，真的有点受宠若惊，还好项目是1.0版本，先实现部分功能，访问量也不大，加上一起很好的上司带我（其实就加上我就两个人= =），完成的还算顺利。期间也学习到了很多。
+项目在5月底启动，属于创业公司的业务扩展吧，IOS和安卓都有成型的版本，所以要做一个对应的移动端H5版的机票订，买票">
+<meta property="og:image" content="https://cdn.rawgit.com/Bless-L/MyBlog/master/assets/111.png">
+<meta property="og:image" content="https://cdn.rawgit.com/Bless-L/MyBlog/master/assets/Screenshot_20160727-232456.png">
+<meta property="og:image" content="https://cdn.rawgit.com/Bless-L/MyBlog/master/assets/Screenshot_20160727-232510.png">
+<meta property="og:image" content="http://vuex.vuejs.org/zh-cn/vuex.png">
+<meta property="og:updated_time" content="2016-07-31T17:18:34.773Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于Vue项目开发中遇到的坑及终结">
+<meta name="twitter:description" content="之前一直在公司忙项目，忙项目的，好歹是发布了1.0版本。终于是有时间写一个总结了。话说我就一个实习生一进来就要做项目核心，真的有点受宠若惊，还好项目是1.0版本，先实现部分功能，访问量也不大，加上一起很好的上司带我（其实就加上我就两个人= =），完成的还算顺利。期间也学习到了很多。
+项目在5月底启动，属于创业公司的业务扩展吧，IOS和安卓都有成型的版本，所以要做一个对应的移动端H5版的机票订，买票">
+  
+    <link rel="alternative" href="/atom.xml" title="堆填区" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://tp2.sinaimg.cn/1902368857/180/5738575043/1" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">落花流水丶</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/碎碎念/">碎碎念</a></li>
+				        
+							<li><a href="/tags/阅读笔记/">阅读笔记</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Bless-L" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/1902368857/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/liang-wei-19-34" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:664007627@qq.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/碎碎念/" style="font-size: 20px;">碎碎念</a> <a href="/tags/闭包/" style="font-size: 10px;">闭包</a> <a href="/tags/阅读笔记/" style="font-size: 15px;">阅读笔记</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">前端菜鸟/ 一加手机2用户/ 爱篮球 爱唱歌 爱王大锤/ 在学习vue</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">落花流水丶</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://tp2.sinaimg.cn/1902368857/180/5738575043/1" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">落花流水丶</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/碎碎念/">碎碎念</a></li>
+		        
+					<li><a href="/tags/阅读笔记/">阅读笔记</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Bless-L" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/1902368857/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/liang-wei-19-34" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:664007627@qq.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-基于Vue项目开发中遇到的坑及终结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/17/基于Vue项目开发中遇到的坑及终结/" class="article-date">
+  	<time datetime="2016-07-17T02:22:11.000Z" itemprop="datePublished">2016-07-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      基于Vue项目开发中遇到的坑及终结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前一直在公司忙项目，忙项目的，好歹是发布了1.0版本。终于是有时间写一个总结了。<br>话说我就一个实习生一进来就要做项目核心，真的有点受宠若惊，还好项目是1.0版本，先实现部分功能，访问量也不大，加上一起很好的上司带我（其实就加上我就两个人= =），完成的还算顺利。期间也学习到了很多。</p>
+<p>项目在5月底启动，属于创业公司的业务扩展吧，IOS和安卓都有成型的版本，所以要做一个对应的移动端H5版的机票订，买票应用，入口是微信公众号，当然少不了jssdk的使用，以及balabala的授权处理等。</p>
+<p>文章写得比较乱，基本上就是想到什么写什么，望各位大大轻喷，有不对的地方还多包含。</p>
+<h1 id="前期准备"><strong>前期准备</strong></h1><hr>
+<p>最初是考虑用React+Redux+Webpack，前后端完全分离，但考虑到人手不足，前后端暂时做不了完全分离，然后还有对React也不熟悉，项目时间等问题，然后就被Boss否了。</p>
+<p>最终用了更熟悉的Vue+Vuex+Webpack。主要还是因为更轻，API更加友好，上手速度更快，加上团队里有人熟悉，可以马上开工。</p>
+<p>比较遗憾的是因为各种原因前后端分离还不是很彻底，前端用的是jsp模板加js渲染页面。好处是首屏数据可以放到script标签里面直出，在进度条读完的时候页面就能够渲染出来了，提高首屏渲染时间。但是调试的时候十分麻烦，因为没有Node做中间层，每次都要在本地完整地跑个服务器，不然拿不到数据。</p>
+<p>Vue，Vuex，Vue-router，Webpack这些不了解的同学就去看看<a href="http://cn.vuejs.org/guide/application.html" target="_blank" rel="external">文档</a>。MV*框架用好了真的是极大地解放生产力，特别是页面的交互十分复杂的时候。</p>
+<h1 id="项目过程中遇到的坑"><strong>项目过程中遇到的坑</strong></h1><hr>
+<p><strong>1.</strong> 遇到的第一个的坑就是transition。首页有一个滑动的banner，我是直接用css3的transition配合js定时改变transform实现的。</p>
+<p>滑动在chrome中模拟没问题，ios中没问题，但是安卓中就没有滑动，百思不得其解。起初还以为是兼容性问题，搞了好久才发现需要在css中先增加一个<code>transform:  translateX(0)</code>，像下面一样，不然之后再通过js更改transform是没法在安卓中触发transition的。<a id="more"></a><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.slide-wp</span><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">transform</span>:<span class="value">  <span class="function">translateX</span>(<span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">-webkit-transform</span>:<span class="value">  <span class="function">translateX</span>(<span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">transition</span>:<span class="value"> transform  <span class="number">1.5s</span> ease</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">-webkit-transition</span>:<span class="value"> transform <span class="number">1.5s</span> ease</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>大家知道，transition的作用是<strong>令CSS的属性值在一定的时间区间内平滑地过渡。</strong></p>
+<p>所以个人猜测，在安卓中，当没有初始值时，<code>translateX</code>的改动没有被平滑地过渡，就是说transition并不知道<code>translateX</code>是从什么地方开始过渡的，所以也就没有平滑之说，也就没有动画了。</p>
+<hr>
+<p><br></p>
+<p><strong>2.</strong> 第二个就是ES6。既然用了Webpack，当然就要配合Bebel用上ES6啦。写的时候还是很爽的。<code>let</code>，<code>const</code>，模块，箭头函数，字符串模版，对象属性简写，解构等等…但帅不过3秒，在chrome上模拟地跑一点问题都没有，一到移动端就直接白屏，页面都没有渲染出来。</p>
+<p>排查了好久，才发现是某些扩展运算符<code>...</code>，某些解构和<code>for...of...</code>循环的问题。因为这些ES6的特性（其实不指这些）在Bebel中转换是要用到<strong>[Symbol.iterator]</strong>接口的。如下面这样。<br>转码前:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [a, b, c, d, e] = <span class="string">'hello'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a, b, c, d, e);<span class="comment">//'h','e','l','l','o'</span></span><br></pre></td></tr></table></figure></p>
+<p>转码后:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> _slicedToArray = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="function"><span class="keyword">function</span> <span class="title">sliceIterator</span>(<span class="params">arr, i</span>) </span>&#123; <span class="keyword">var</span> _arr = []; <span class="keyword">var</span> _n = <span class="literal">true</span>; <span class="keyword">var</span> _d = <span class="literal">false</span>; <span class="keyword">var</span> _e = <span class="literal">undefined</span>; <span class="keyword">try</span> &#123; <span class="keyword">for</span> (<span class="keyword">var</span> _i = arr[<span class="built_in">Symbol</span>.iterator](), _s; !(_n = (_s = _i.next()).done); _n = <span class="literal">true</span>) &#123; _arr.push(_s.value); <span class="keyword">if</span> (i &amp;&amp; _arr.length === i) <span class="keyword">break</span>; &#125; &#125; <span class="keyword">catch</span> (err) &#123; _d = <span class="literal">true</span>; _e = err; &#125; <span class="keyword">finally</span> &#123; <span class="keyword">try</span> &#123; <span class="keyword">if</span> (!_n &amp;&amp; _i[<span class="string">'return'</span>]) _i[<span class="string">'return'</span>](); &#125; <span class="keyword">finally</span> &#123; <span class="keyword">if</span> (_d) <span class="keyword">throw</span> _e; &#125; &#125; <span class="keyword">return</span> _arr; &#125; <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">arr, i</span>) </span>&#123; <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(arr)) &#123; <span class="keyword">return</span> arr; &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">Symbol</span>.iterator <span class="keyword">in</span> <span class="built_in">Object</span>(arr)) &#123; <span class="keyword">return</span> sliceIterator(arr, i); &#125; <span class="keyword">else</span> &#123; <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Invalid attempt to destructure non-iterable instance'</span>); &#125; &#125;; &#125;)();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> _hello = <span class="string">'hello'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> _hello2 = _slicedToArray(_hello, <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = _hello2[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> b = _hello2[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> c = _hello2[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">var</span> d = _hello2[<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> e = _hello2[<span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a, b, c, d, e);<span class="comment">//'h','e','l','l','o'</span></span><br></pre></td></tr></table></figure></p>
+<p>第一行先声明的_slicedToArray函数用到了[Symbol.iterator]接口，然而浏览器对这个接口的支持还很有限，特别是移动端，只有Firefox Mobile36版本以上才支持，其它清一色挂掉。</p>
+<p>如下图所示：<br><img src="https://cdn.rawgit.com/Bless-L/MyBlog/master/assets/111.png" alt="博客图片"><br>所以说ES6虽好，但真要用到实际项目中的话，还不能太激进，有些特性经过Bebel转码后性能上可能还会有所下降，所以还是应该合理地使用ES6。如果是自己折腾倒无所谓，Symbol，Class，Generator，Promise这些就随便炫技吧。</p>
+<hr>
+<p><br></p>
+<p><strong>3.</strong> 第三个坑就是Vue使用的问题。如其说是坑，还是不如说是我自身还不够熟悉Vue。先看一下官方说明：</p>
+<blockquote>
+<p>受 ES5 的限制，Vue.js 不能检测到对象属性的添加或删除。因为 Vue.js 在初始化实例时将属性转为 getter/setter，所以属性必须在 data 对象上才能让 Vue.js 转换它，才能让它是响应的。</p>
+</blockquote>
+<p>当时需要在props传来的某些对象数据中增加一个是否可视属性，用来控制一个与其关联的弹出框。增加后点击视图上一点反应都没有，但是用<code>console.log</code>打印出来发现值的确的有变化的。</p>
+<p>也就是说，<strong>数据的变化不能触发视图更新</strong>。原因就是如上面所说，因为这个属性是我后来添加的，不能被Vuejs检测到。这时候需要使用<a href="http://vuejs.org.cn/api/#vm-set" target="_blank" rel="external">$set(key, value)</a>这个API。</p>
+<p>话说里面的语法需要注意下，第一个参数<code>key</code>是一个字符串，是一个<code>keypath</code>，如果假如你的数据是这样:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">    visitors : [&#123;</span><br><span class="line">            <span class="string">"id"</span>: <span class="number">1</span>,</span><br><span class="line">    	    ...</span><br><span class="line">    	&#125;, &#123;</span><br><span class="line">    	    <span class="string">"id"</span>: <span class="number">2</span>,</span><br><span class="line">    		...</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">    		<span class="string">"id"</span>: <span class="number">3</span>,</span><br><span class="line">    		...</span><br><span class="line">        &#125;],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>你需要在某次操作后<code>为visitiors</code>里面的每个对象增加一个<code>show</code>属性,则需要这样写：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span> , len = <span class="keyword">this</span>.visitors.length ; i &lt; len; i++) &#123;</span><br><span class="line">    str = <span class="string">"visitors["</span> + i + <span class="string">"].show"</span>;</span><br><span class="line">    <span class="keyword">this</span>.$set(str,<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>之前真的被这东西搞了很久，明明数据变化了，视图却不更新。个人感觉新手刚使用Vue时很难发现这个问题。也怪自己对Vue，对ES5的<code>getter/setter</code>的理解还不够吧。</p>
+<hr>
+<p><br></p>
+<p><strong>4.</strong> 第四个是IOS上的滚动问题。在某些浏览器下，例如微信内嵌浏览器，手指在屏幕上滑动时，页面会进入momentum scrolling(弹性滚动)。这时候会停止所有的<strong>事件响应</strong>及<strong>DOM操作引起的页面渲染</strong>，onscroll事件不会触发，CSS3动画，gif这些也不会动，一直到滑动停止。</p>
+<p>因为需要onscroll事件来执行懒加载等操作，但是在IOS中是要等到滑动停止后才能执行的，用户体验不好。当时google了很久，最终得出的结论是，并没有什么很好的解决方案。所以暂时只能在IOS上首次加载更多资源了。</p>
+<p>贴一个在segmentfault上的答案吧，很好地总结了这个问题。（<a href="https://segmentfault.com/q/1010000004453730" target="_blank" rel="external">戳这里</a>）</p>
+<hr>
+<p><br></p>
+<p><strong>5.</strong> 第五个还是IOS上CSS3动画的问题，今天才遇到的。在对img或者设置了background-image的DOM元素设置CSS动画时，动画在刚进入页面的时候有可能不被触发，需要滑动一下屏幕动画才动，安卓下则没有问题。</p>
+<p>刚开始还以为是没有设置初始值的问题，但感觉不应该会是这样的。后来在stackoverflow上找到了解决办法(<a href="http://stackoverflow.com/questions/29219534/css-animation-not-always-starting-in-ios-8-safari" target="_blank" rel="external">戳这里</a>)。<br>给动画加个0.1s秒的延时<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">animation</span>: <span class="tag">slide</span> 1<span class="class">.5s</span> 0<span class="class">.1s</span> <span class="tag">linear</span> <span class="tag">infinite</span>;</span><br><span class="line"><span class="tag">webkit-animation</span>: <span class="tag">slide</span> 1<span class="class">.5s</span> 0<span class="class">.1s</span> <span class="tag">linear</span> <span class="tag">infinite</span>;</span><br></pre></td></tr></table></figure></p>
+<p>原因大概是如果Safari和IOS的微信内置浏览器在加载资源，或者进行什么内部渲染操作时出现了短暂的停顿(英文是hiccups)，则不会触发动画，需要滑动一下页面来重新触发。所以给动画加个0.1s延时确保资源加载完成后，问题得以解决。</p>
+<hr>
+<p><br></p>
+<h1 id="关于Vue的组件化"><strong>关于Vue的组件化</strong></h1><hr>
+<p>先上个<a href="https://github.com/xufei" target="_blank" rel="external">@xufei</a>大大的<a href="https://github.com/xufei/blog/issues/6" target="_blank" rel="external">博客</a>，里面有多关于组件化的文章，都是满满的干货。</p>
+<p>其实组件化是一个很庞大的话题，我这等小白的认识还十分显浅，不过既然在项目中用到了组件化，也就谈谈自己的看法吧。</p>
+<p>Vue的组件化需要配合Webpack+vue-loader 或者 Browserify + vueify 来构建。一个.vue文件一个组件，上手了写起来是十分快捷的，不过对于新手可能就要花点时间去熟悉工具了。</p>
+<p>之前在看了<a href="https://github.com/xufei" target="_blank" rel="external">@xufei</a>的博客加上自己的工程实践后，表示十分赞同他的说法：</p>
+<blockquote>
+<p>很多人会把复用作为组件化的第一需求，但实际上，在UI层，复用的价值远远比不上分治。</p>
+</blockquote>
+<p>特别是对于.vue这种形式的组件化来说，想做到复用往往需要做到内部实现高度抽象，并对外暴露很多接口，而复用的地方也并不是很多。很多时候，花那么多时间去实现一个组件复用，还不如新建一个组件，复制部分代码，重新进行内部实现来得更快。</p>
+<p>要知道一个.vue文件里面除了<code>&lt;template&gt;</code>、<code>&lt;style&gt;</code>，还有<code>&lt;script&gt;</code>。前两者用于实现组件的样式呈现，对于很多地方来说，可能只是有着些许差别，但<code>&lt;script&gt;</code>里面的东西则是代表着组件的内部逻辑实现，这些逻辑往往有着很大的不同。</p>
+<p><img src="https://cdn.rawgit.com/Bless-L/MyBlog/master/assets/Screenshot_20160727-232456.png" alt="图1" align="center" width="250" height="446"><img src="https://cdn.rawgit.com/Bless-L/MyBlog/master/assets/Screenshot_20160727-232510.png" alt="图2" align="center" width="250" height="446"></p>
+<p>如上面的图1，图2。从样式上看，不同的地方仅仅是图2的每个常用乘机人多了一个复选框勾选，似乎可以通过某个标记来约定是否出现勾选框来达成组件复用。</p>
+<p>但实际上，因为这两个组件所身处的业务页面的不同而存在着较大的内部逻辑实现差异。</p>
+<p>像图1，是在我的板块里面的。里面仅仅是一个乘客展示和乘客信息编辑的作用，相对较为独立。而图2则是在订单确认页面里面的，除了乘客展示和乘客信息编辑外，还有选择乘客的作用。点了保存后会与订单状态产生交互，而且订单状态的改变还会反过来影响着这些乘客信息的状态，远比图1里面的复杂。</p>
+<p>如果强行抽象中公共部分，对外暴露各种API来令该组件可复用，除了实现成本和维护成本高外，其复用得到的价值也不高。还不如写多一个组件，复制其样式部分，重新实现内部逻辑来得实在。而且将两个组件放在不同的板块内，相互独立，也方便管理和维护。</p>
+<p>那怎样的组件才适合复用？我个人认为，<strong>只有很少内部逻辑的展示型组件才适合复用</strong>。像导航栏，弹出层，加载动画这些。而其它的一些组件往往只在两三页面存在复用价值，是否抽象分离出来，就要看个人取舍了。</p>
+<hr>
+<p><br></p>
+<h1 id="关于Vuex"><strong>关于Vuex</strong></h1><hr>
+<p>Vuex 之于 vux，就相当于 Redux 之于 React。它是一套数据管理架构实现，用于解决在大型前端应用时数据流动，数据管理等问题。</p>
+<p>因为组件一旦多起来，不同组件之间的通信和数据流动会变得十分繁琐及难以追踪，特别是在子组件向同级子组件通信时，你可能需要先\$dispatch到父组件，再\$broadcast给子组件，整个事件流十分繁杂，也很难调试。</p>
+<p>Vuex就是用来解决这些问题的。更具体的说明可以看<a href="http://vuex.vuejs.org/zh-cn/index.html" target="_blank" rel="external">文档</a>，我就不过多叙述了。我就说一下我对Vuex的一些理解。</p>
+<p>Vuex里面的数据流是单向的,就像官方说的那样：</p>
+<blockquote>
+<ol>
+<li>用户在组件中的输入操作触发 action 调用；</li>
+<li>Actions 通过分发 mutations 来修改 store 实例的状态；</li>
+<li>Store 实例的状态变化反过来又通过 getters 被组件获知。</li>
+</ol>
+</blockquote>
+<p><img src="http://vuex.vuejs.org/zh-cn/vuex.png" alt="vuex"></p>
+<p>而且为了保证数据是单向流动，并且是可监控和可预测的，除了在mutation handlers 外，其它地方不允许直接修改 store 里面的 state。</p>
+<p>个人认为store就是一个类数据库的东西，处于整个应用的最顶端，每个组件之间共享数据，并通过actions来对数据进行操作。在这样的理解下，我更倾向于把mutations类比为查询语句，即只在mutations里面进行增删查改，筛选，排序等一些简单的逻辑操作，也符合是同步函数的约束。就像这样<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mutations = &#123;</span><br><span class="line">    <span class="comment">//设置常用乘机人列表</span></span><br><span class="line">	SET_PSGLIST(state, psgList)&#123;</span><br><span class="line">		state.psgList = psgList;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">//增加在订单中的乘客</span></span><br><span class="line">	ADD_ORDERPSG(state, orderPsg)&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>,len = state.orderPsgList.length; i &lt; len; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (state.orderPsgList[i].id == orderPsg.id) &#123;</span><br><span class="line">				state.orderPsgList[i] = orderPsg;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		state.orderPsgList.push(orderPsg);</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">//删除在订单中的乘客</span></span><br><span class="line">	REMOVE_ORDERPSG(state, orderPsg)&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>,len = state.orderPsgList.length; i &lt; len; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (state.orderPsgList[i].id == orderPsg.id) &#123;</span><br><span class="line">				state.orderPsgList.splice(i,<span class="number">1</span>)</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>更复杂的逻辑则写进actions中。例如我要在action中先异步获取常用乘机人数据，并初始化：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//action</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> iniPsgList = (&#123; dispatch &#125;, uid) =&gt;&#123;</span><br><span class="line"> 	<span class="keyword">let</span> data = &#123;</span><br><span class="line">		uid: uid,</span><br><span class="line">	&#125;</span><br><span class="line">  	$.ajax(&#123;</span><br><span class="line">		url: <span class="string">"../passenger/list"</span>,</span><br><span class="line">		data: data,</span><br><span class="line">		success(data)&#123;</span><br><span class="line">			<span class="keyword">let</span> jsonData = <span class="built_in">JSON</span>.parse(data);</span><br><span class="line">			<span class="keyword">let</span> psgs = jsonData.data.passengers;</span><br><span class="line">			dispatch(<span class="string">'SET_PSGLIST'</span>, psgs);</span><br><span class="line">		&#125;,</span><br><span class="line">		error()&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(<span class="string">'获取常用乘机人列表信息错误'</span>)；</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)	 </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//组件中调用</span></span><br><span class="line"><span class="keyword">import</span> &#123; iniPsgList &#125; <span class="keyword">from</span> <span class="string">'./actions'</span></span><br><span class="line"></span><br><span class="line">const vm = new Vue(&#123;</span><br><span class="line">    created()&#123;</span><br><span class="line">        this.iniPsgList(uid);</span><br><span class="line">    &#125;,</span><br><span class="line">    vuex: &#123;</span><br><span class="line">        getters: &#123; ... &#125;,</span><br><span class="line">        actions: iniPsgList,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>或者，为了令actions实现得更为通用，你完全可以给每个mutation对应写一个action，每个action就只是分发该mutation，不做其它额外的事情。然后再在组件中引入这些actions。这样其实就相当于在组件中触发mutations，从而减少action这个流程。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeAction</span>(<span class="params">type , data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (&#123; dispath &#125;, data) =&gt; &#123; dispatch( type , data) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> setPsgList = makeAction(<span class="string">'SET_PSGLIST'</span>, psgList)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> addOrderPsg = makeAction(<span class="string">'ADD_ORDERPSG'</span>, orderPsg)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> removeOrderPsg = makeAction(<span class="string">'REMOVE_ORDERPSG'</span>, orderPsg)</span><br></pre></td></tr></table></figure>
+<p>这时候初始化常用乘机人列表，则是这样写。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//组件中调用</span></span><br><span class="line"><span class="keyword">import</span> &#123; setPsgList &#125; <span class="keyword">from</span> <span class="string">'./actions'</span></span><br><span class="line"></span><br><span class="line">const vm = new Vue(&#123;</span><br><span class="line">    created()&#123;</span><br><span class="line">     	let data = &#123;</span><br><span class="line">		    uid: uid,</span><br><span class="line">    	&#125;</span><br><span class="line">      	$.ajax(&#123;</span><br><span class="line">    		url: <span class="string">"../passenger/list"</span>,</span><br><span class="line">    		data: data,</span><br><span class="line">    		success: (data) = &gt; &#123;</span><br><span class="line">    			<span class="keyword">let</span> jsonData = <span class="built_in">JSON</span>.parse(data);</span><br><span class="line">    			<span class="keyword">let</span> psgs = jsonData.data.passengers;</span><br><span class="line">    			<span class="keyword">this</span>.setPsgList(psgs);</span><br><span class="line">    		&#125;,</span><br><span class="line">    		error()&#123;</span><br><span class="line">    			<span class="built_in">console</span>.log(<span class="string">'获取常用乘机人列表信息错误'</span>)；</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;)   </span><br><span class="line">    &#125;,</span><br><span class="line">    vuex: &#123;</span><br><span class="line">        getters: &#123; ... &#125;,</span><br><span class="line">        actions: setPsgList,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>两者的区别就仅是把异步等一些更复杂的逻辑放在action中还是放在组件内部逻辑中。前者的action更有针对性，更具有唯一性；后者的action仅仅就是一个触发mutation的作用，而组件则与更多的逻辑耦合。</p>
+<p>谁优谁劣很难说清，和个人喜好、业务逻辑等有较大关系。我在项目中使用的是后一种用法，因为我个人更喜欢在组件实现更多的内部逻辑，方便以后针对改组件的调试和维护，免得还要在action中寻找一次。</p>
+<hr>
+<p>莫名其妙地扯了这么多，其实都是一些总结与归纳。本人还是菜鸟一枚，难免有错误和疏漏，还望各位大大轻喷。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/06/05/《你不知道的Javascript-上-》阅读笔记-二/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《你不知道的Javascript(上)》阅读笔记(二)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 落花流水丶
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

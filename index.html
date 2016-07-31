@@ -109,7 +109,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/碎碎念/" style="font-size: 20px;">碎碎念</a> <a href="/tags/闭包/" style="font-size: 10px;">闭包</a> <a href="/tags/阅读笔记/" style="font-size: 16.67px;">阅读笔记</a>
+						<a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/碎碎念/" style="font-size: 20px;">碎碎念</a> <a href="/tags/闭包/" style="font-size: 10px;">闭包</a> <a href="/tags/阅读笔记/" style="font-size: 15px;">阅读笔记</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a>
 					</div>
 				</section>
 				
@@ -174,6 +174,74 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-基于Vue项目开发中遇到的坑及终结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/17/基于Vue项目开发中遇到的坑及终结/" class="article-date">
+  	<time datetime="2016-07-17T02:22:11.000Z" itemprop="datePublished">2016-07-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/17/基于Vue项目开发中遇到的坑及终结/">基于Vue项目开发中遇到的坑及终结</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前一直在公司忙项目，忙项目的，好歹是发布了1.0版本。终于是有时间写一个总结了。<br>话说我就一个实习生一进来就要做项目核心，真的有点受宠若惊，还好项目是1.0版本，先实现部分功能，访问量也不大，加上一起很好的上司带我（其实就加上我就两个人= =），完成的还算顺利。期间也学习到了很多。</p>
+<p>项目在5月底启动，属于创业公司的业务扩展吧，IOS和安卓都有成型的版本，所以要做一个对应的移动端H5版的机票订，买票应用，入口是微信公众号，当然少不了jssdk的使用，以及balabala的授权处理等。</p>
+<p>文章写得比较乱，基本上就是想到什么写什么，望各位大大轻喷，有不对的地方还多包含。</p>
+<h1 id="前期准备"><strong>前期准备</strong></h1><hr>
+<p>最初是考虑用React+Redux+Webpack，前后端完全分离，但考虑到人手不足，前后端暂时做不了完全分离，然后还有对React也不熟悉，项目时间等问题，然后就被Boss否了。</p>
+<p>最终用了更熟悉的Vue+Vuex+Webpack。主要还是因为更轻，API更加友好，上手速度更快，加上团队里有人熟悉，可以马上开工。</p>
+<p>比较遗憾的是因为各种原因前后端分离还不是很彻底，前端用的是jsp模板加js渲染页面。好处是首屏数据可以放到script标签里面直出，在进度条读完的时候页面就能够渲染出来了，提高首屏渲染时间。但是调试的时候十分麻烦，因为没有Node做中间层，每次都要在本地完整地跑个服务器，不然拿不到数据。</p>
+<p>Vue，Vuex，Vue-router，Webpack这些不了解的同学就去看看<a href="http://cn.vuejs.org/guide/application.html">文档</a>。MV*框架用好了真的是极大地解放生产力，特别是页面的交互十分复杂的时候。</p>
+<h1 id="项目过程中遇到的坑"><strong>项目过程中遇到的坑</strong></h1><hr>
+<p><strong>1.</strong> 遇到的第一个的坑就是transition。首页有一个滑动的banner，我是直接用css3的transition配合js定时改变transform实现的。</p>
+<p>滑动在chrome中模拟没问题，ios中没问题，但是安卓中就没有滑动，百思不得其解。起初还以为是兼容性问题，搞了好久才发现需要在css中先增加一个<code>transform:  translateX(0)</code>，像下面一样，不然之后再通过js更改transform是没法在安卓中触发transition的。
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/17/基于Vue项目开发中遇到的坑及终结/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-《你不知道的Javascript-上-》阅读笔记-二" class="article article-type-post" itemscope itemprop="blogPost">
   
