@@ -1,11 +1,90 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
+<!doctype html>
+
+
+
   
-  <title>基于Vue项目开发中遇到的坑及终结 | 堆填区</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="之前一直在公司忙项目，忙项目的，好歹是发布了1.0版本。终于是有时间写一个总结了。话说我就一个实习生一进来就要做项目核心，真的有点受宠若惊，还好项目是1.0版本，先实现部分功能，访问量也不大，加上一起很好的上司带我（其实就加上我就两个人= =），完成的还算顺利。期间也学习到了很多。
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript,Vue,项目," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="之前一直在公司忙项目，忙项目的，好歹是发布了1.0版本。终于是有时间写一个总结了。话说我就一个实习生一进来就要做项目核心，真的有点受宠若惊，还好项目是1.0版本，先实现部分功能，访问量也不大，加上一起很好的上司带我（其实就加上我就两个人= =），完成的还算顺利。期间也学习到了很多。
 项目在5月底启动，属于创业公司的业务扩展吧，IOS和安卓都有成型的版本，所以要做一个对应的移动端H5版的机票订，买票">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于Vue项目开发中遇到的坑及终结">
@@ -17,218 +96,232 @@
 <meta property="og:image" content="https://cdn.rawgit.com/Bless-L/MyBlog/master/assets/Screenshot_20160727-232456.png">
 <meta property="og:image" content="https://cdn.rawgit.com/Bless-L/MyBlog/master/assets/Screenshot_20160727-232510.png">
 <meta property="og:image" content="http://vuex.vuejs.org/zh-cn/vuex.png">
-<meta property="og:updated_time" content="2016-07-31T17:18:34.773Z">
+<meta property="og:updated_time" content="2016-08-28T05:18:39.658Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Vue项目开发中遇到的坑及终结">
 <meta name="twitter:description" content="之前一直在公司忙项目，忙项目的，好歹是发布了1.0版本。终于是有时间写一个总结了。话说我就一个实习生一进来就要做项目核心，真的有点受宠若惊，还好项目是1.0版本，先实现部分功能，访问量也不大，加上一起很好的上司带我（其实就加上我就两个人= =），完成的还算顺利。期间也学习到了很多。
 项目在5月底启动，属于创业公司的业务扩展吧，IOS和安卓都有成型的版本，所以要做一个对应的移动端H5版的机票订，买票">
-  
-    <link rel="alternative" href="/atom.xml" title="堆填区" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/07/17/基于Vue项目开发中遇到的坑及终结/"/>
+
+  <title> 基于Vue项目开发中遇到的坑及终结 | 堆填区 </title>
 </head>
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img lazy-src="http://tp2.sinaimg.cn/1902368857/180/5738575043/1" class="js-avatar">
-			
-		</a>
 
-		<hgroup>
-		  <h1 class="header-author"><a href="/">落花流水丶</a></h1>
-		</hgroup>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-		
+  
 
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>标签</li>
-						
-						
-						<li>关于我</li>
-						
-					</ul>
-				</div>
-			</div>
-		
 
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">所有文章</a></li>
-				        
-							<li><a href="/tags/碎碎念/">碎碎念</a></li>
-				        
-							<li><a href="/tags/阅读笔记/">阅读笔记</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-								<a class="github" target="_blank" href="https://github.com/Bless-L" title="github">github</a>
-					        
-								<a class="weibo" target="_blank" href="http://weibo.com/1902368857/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
-					        
-								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/liang-wei-19-34" title="zhihu">zhihu</a>
-					        
-								<a class="mail" target="_blank" href="mailto:664007627@qq.com" title="mail">mail</a>
-					        
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/碎碎念/" style="font-size: 20px;">碎碎念</a> <a href="/tags/闭包/" style="font-size: 10px;">闭包</a> <a href="/tags/阅读笔记/" style="font-size: 15px;">阅读笔记</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a>
-					</div>
-				</section>
-				
-				
-				
 
-				
-				
-				<section class="switch-part switch-part3">
-				
-					<div id="js-aboutme">前端菜鸟/ 一加手机2用户/ 爱篮球 爱唱歌 爱王大锤/ 在学习vue</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">堆填区</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">梁爽的个人博客</p>
 </div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">落花流水丶</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img lazy-src="http://tp2.sinaimg.cn/1902368857/180/5738575043/1" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">落花流水丶</h1>
-			</hgroup>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">所有文章</a></li>
-		        
-					<li><a href="/tags/碎碎念/">碎碎念</a></li>
-		        
-					<li><a href="/tags/阅读笔记/">阅读笔记</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/Bless-L" title="github">github</a>
-			        
-						<a class="weibo" target="_blank" href="http://weibo.com/1902368857/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
-			        
-						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/liang-wei-19-34" title="zhihu">zhihu</a>
-			        
-						<a class="mail" target="_blank" href="mailto:664007627@qq.com" title="mail">mail</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
 </nav>
-      <div class="body-wrap"><article id="post-基于Vue项目开发中遇到的坑及终结" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/17/基于Vue项目开发中遇到的坑及终结/" class="article-date">
-  	<time datetime="2016-07-17T02:22:11.000Z" itemprop="datePublished">2016-07-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
+
   
-    <h1 class="article-title" itemprop="name">
-      基于Vue项目开发中遇到的坑及终结
-    </h1>
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基于Vue项目开发中遇到的坑及终结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-17T10:22:11+08:00" content="2016-07-17">
+              2016-07-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/项目总结/" itemprop="url" rel="index">
+                    <span itemprop="name">项目总结</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
       </header>
-      
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
-	</div>
-
-        
-
-        <div class="clearfix"></div>
-      </div>
-      
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
       
         <p>之前一直在公司忙项目，忙项目的，好歹是发布了1.0版本。终于是有时间写一个总结了。<br>话说我就一个实习生一进来就要做项目核心，真的有点受宠若惊，还好项目是1.0版本，先实现部分功能，访问量也不大，加上一起很好的上司带我（其实就加上我就两个人= =），完成的还算顺利。期间也学习到了很多。</p>
 <p>项目在5月底启动，属于创业公司的业务扩展吧，IOS和安卓都有成型的版本，所以要做一个对应的移动端H5版的机票订，买票应用，入口是微信公众号，当然少不了jssdk的使用，以及balabala的授权处理等。</p>
 <p>文章写得比较乱，基本上就是想到什么写什么，望各位大大轻喷，有不对的地方还多包含。</p>
 <h1 id="前期准备"><strong>前期准备</strong></h1><hr>
 <p>最初是考虑用React+Redux+Webpack，前后端完全分离，但考虑到人手不足，前后端暂时做不了完全分离，然后还有对React也不熟悉，项目时间等问题，然后就被Boss否了。</p>
-<p>最终用了更熟悉的Vue+Vuex+Webpack。主要还是因为更轻，API更加友好，上手速度更快，加上团队里有人熟悉，可以马上开工。</p>
-<p>比较遗憾的是因为各种原因前后端分离还不是很彻底，前端用的是jsp模板加js渲染页面。好处是首屏数据可以放到script标签里面直出，在进度条读完的时候页面就能够渲染出来了，提高首屏渲染时间。但是调试的时候十分麻烦，因为没有Node做中间层，每次都要在本地完整地跑个服务器，不然拿不到数据。</p>
+<p>最终用了更熟悉的Vue+Vuex+Webpack。主要还是因为更轻，API更加友好，上手速度更快，加上团队里有人熟悉，可以马上开工。<br><a id="more"></a><br>比较遗憾的是因为各种原因前后端分离还不是很彻底，前端用的是jsp模板加js渲染页面。好处是首屏数据可以放到script标签里面直出，在进度条读完的时候页面就能够渲染出来了，提高首屏渲染时间。但是调试的时候十分麻烦，因为没有Node做中间层，每次都要在本地完整地跑个服务器，不然拿不到数据。</p>
 <p>Vue，Vuex，Vue-router，Webpack这些不了解的同学就去看看<a href="http://cn.vuejs.org/guide/application.html" target="_blank" rel="external">文档</a>。MV*框架用好了真的是极大地解放生产力，特别是页面的交互十分复杂的时候。</p>
 <h1 id="项目过程中遇到的坑"><strong>项目过程中遇到的坑</strong></h1><hr>
 <p><strong>1.</strong> 遇到的第一个的坑就是transition。首页有一个滑动的banner，我是直接用css3的transition配合js定时改变transform实现的。</p>
-<p>滑动在chrome中模拟没问题，ios中没问题，但是安卓中就没有滑动，百思不得其解。起初还以为是兼容性问题，搞了好久才发现需要在css中先增加一个<code>transform:  translateX(0)</code>，像下面一样，不然之后再通过js更改transform是没法在安卓中触发transition的。<a id="more"></a><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.slide-wp</span><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">transform</span>:<span class="value">  <span class="function">translateX</span>(<span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">-webkit-transform</span>:<span class="value">  <span class="function">translateX</span>(<span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">transition</span>:<span class="value"> transform  <span class="number">1.5s</span> ease</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">-webkit-transition</span>:<span class="value"> transform <span class="number">1.5s</span> ease</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>滑动在chrome中模拟没问题，ios中没问题，但是安卓中就没有滑动，百思不得其解。起初还以为是兼容性问题，搞了好久才发现需要在css中先增加一个<code>transform:  translateX(0)</code>，像下面一样，不然之后再通过js更改transform是没法在安卓中触发transition的。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.slide-wp</span><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">transform</span>:<span class="value">  <span class="function">translateX</span>(<span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">-webkit-transform</span>:<span class="value">  <span class="function">translateX</span>(<span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">transition</span>:<span class="value"> transform  <span class="number">1.5s</span> ease</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">-webkit-transition</span>:<span class="value"> transform <span class="number">1.5s</span> ease</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
 <p>大家知道，transition的作用是<strong>令CSS的属性值在一定的时间区间内平滑地过渡。</strong></p>
 <p>所以个人猜测，在安卓中，当没有初始值时，<code>translateX</code>的改动没有被平滑地过渡，就是说transition并不知道<code>translateX</code>是从什么地方开始过渡的，所以也就没有平滑之说，也就没有动画了。</p>
 <hr>
@@ -271,7 +364,7 @@
 </blockquote>
 <p>特别是对于.vue这种形式的组件化来说，想做到复用往往需要做到内部实现高度抽象，并对外暴露很多接口，而复用的地方也并不是很多。很多时候，花那么多时间去实现一个组件复用，还不如新建一个组件，复制部分代码，重新进行内部实现来得更快。</p>
 <p>要知道一个.vue文件里面除了<code>&lt;template&gt;</code>、<code>&lt;style&gt;</code>，还有<code>&lt;script&gt;</code>。前两者用于实现组件的样式呈现，对于很多地方来说，可能只是有着些许差别，但<code>&lt;script&gt;</code>里面的东西则是代表着组件的内部逻辑实现，这些逻辑往往有着很大的不同。</p>
-<p><img src="https://cdn.rawgit.com/Bless-L/MyBlog/master/assets/Screenshot_20160727-232456.png" alt="图1" align="center" width="250" height="446"><img src="https://cdn.rawgit.com/Bless-L/MyBlog/master/assets/Screenshot_20160727-232510.png" alt="图2" align="center" width="250" height="446"></p>
+<p><img src="https://cdn.rawgit.com/Bless-L/MyBlog/master/assets/Screenshot_20160727-232456.png" alt="图1" align="center" style="width:250px;height:446px"><img src="https://cdn.rawgit.com/Bless-L/MyBlog/master/assets/Screenshot_20160727-232510.png" alt="图2" align="center" style="width:250px;height:446px"></p>
 <p>如上面的图1，图2。从样式上看，不同的地方仅仅是图2的每个常用乘机人多了一个复选框勾选，似乎可以通过某个标记来约定是否出现勾选框来达成组件复用。</p>
 <p>但实际上，因为这两个组件所身处的业务页面的不同而存在着较大的内部逻辑实现差异。</p>
 <p>像图1，是在我的板块里面的。里面仅仅是一个乘客展示和乘客信息编辑的作用，相对较为独立。而图2则是在订单确认页面里面的，除了乘客展示和乘客信息编辑外，还有选择乘客的作用。点了保存后会与订单状态产生交互，而且订单状态的改变还会反过来影响着这些乘客信息的状态，远比图1里面的复杂。</p>
@@ -280,7 +373,7 @@
 <hr>
 <p><br></p>
 <h1 id="关于Vuex"><strong>关于Vuex</strong></h1><hr>
-<p>Vuex 之于 vux，就相当于 Redux 之于 React。它是一套数据管理架构实现，用于解决在大型前端应用时数据流动，数据管理等问题。</p>
+<p>Vuex 之于 vue，就相当于 Redux 之于 React。它是一套数据管理架构实现，用于解决在大型前端应用时数据流动，数据管理等问题。</p>
 <p>因为组件一旦多起来，不同组件之间的通信和数据流动会变得十分繁琐及难以追踪，特别是在子组件向同级子组件通信时，你可能需要先\$dispatch到父组件，再\$broadcast给子组件，整个事件流十分繁杂，也很难调试。</p>
 <p>Vuex就是用来解决这些问题的。更具体的说明可以看<a href="http://vuex.vuejs.org/zh-cn/index.html" target="_blank" rel="external">文档</a>，我就不过多叙述了。我就说一下我对Vuex的一些理解。</p>
 <p>Vuex里面的数据流是单向的,就像官方说的那样：</p>
@@ -307,103 +400,332 @@
 
       
     </div>
-    
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2016/06/05/《你不知道的Javascript-上-》阅读笔记-二/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">《你不知道的Javascript(上)》阅读笔记(二)</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
 
-  
-</article>
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+            <a href="/tags/Vue/" rel="tag">#Vue</a>
+          
+            <a href="/tags/项目/" rel="tag">#项目</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/05/《你不知道的Javascript-上-》阅读笔记-二/" rel="next" title="《你不知道的Javascript(上)》阅读笔记(二)">
+                <i class="fa fa-chevron-left"></i> 《你不知道的Javascript(上)》阅读笔记(二)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
 
 
-<div class="share">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">分享到：</span>
-		<a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
 
-
-
-
-
-</div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2016 落花流水丶
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
+    <div class="post-spread">
+      
     </div>
   </div>
-</footer>
-    </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
     
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-
-
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: true,
-		animate: true,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
-
-
-
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
   </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="梁爽丶" />
+          <p class="site-author-name" itemprop="name">梁爽丶</p>
+          <p class="site-description motion-element" itemprop="description">大四狗，在秋招</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Bless-L" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:664007627@qq.com" target="_blank" title="Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  Mail
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/1902368857/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/liang-wei-19-34" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前期准备"><span class="nav-number">1.</span> <span class="nav-text">前期准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目过程中遇到的坑"><span class="nav-number">2.</span> <span class="nav-text">项目过程中遇到的坑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于Vue的组件化"><span class="nav-number">3.</span> <span class="nav-text">关于Vue的组件化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于Vuex"><span class="nav-number">4.</span> <span class="nav-text">关于Vuex</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">梁爽丶</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
 </body>
 </html>
