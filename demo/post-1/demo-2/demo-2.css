@@ -1,6 +1,14 @@
 * {
   margin: 0;
 }
+html, body {
+  height: 100%;
+}
+body {
+  position: relative;
+  margin: 0 auto;
+  max-width: 640px;
+}
 .lightbar {
   position: absolute;
   width: 100%;
@@ -8,6 +16,7 @@
   left: 0;
   right: 0;
   background-color: #333;
+  overflow: hidden;
 }
 #J_canvas_temp {
   display: none;
